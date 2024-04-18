@@ -2,13 +2,13 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int numberOfDigits = 4; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 3; // Change this to specify the number of digits for the two numbers
         Random random = new Random();
 
         // long first_number = generateRandomNumber(numberOfDigits, random);
         // long second_number = generateRandomNumber(numberOfDigits, random);
         long first_number = 754;
-        long second_number = 797;
+        long second_number = 380;
         long result = 0;;
 
          
@@ -110,7 +110,7 @@ public class Main {
             
             if (i == length - 1) {
                 System.out.println(line);
-                System.out.println(indentation + result);
+                System.out.println(" " + space + result);
                 System.out.println(line);
             }
 
