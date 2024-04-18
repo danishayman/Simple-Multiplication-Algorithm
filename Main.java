@@ -1,8 +1,15 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        long first_number = 500000; // Note the 'L' suffix to indicate a long literal
-        long second_number = 500000; // Note the 'L' suffix to indicate a long literal
-        long result = 0;
+        int numberOfDigits = 4; // Change this to specify the number of digits for the two numbers
+        Random random = new Random();
+
+        // long first_number = generateRandomNumber(numberOfDigits, random);
+        // long second_number = generateRandomNumber(numberOfDigits, random);
+        long first_number = 754;
+        long second_number = 797;
+        long result = 0;;
 
          
 
@@ -43,7 +50,7 @@ public class Main {
             partial_result[i] *= (long) Math.pow(10, i);
         }
 
-        // prlong the result
+        // print the result
         for (int i = 0; i < length; i++) {
             // add the result of the multiplication to the previous result
             result += partial_result[i] + carry[i];
@@ -60,22 +67,19 @@ public class Main {
             space += " ";
         }
 
-        // String headerSpace = "";
-        // for (long i = 0; i < length+3; i++) {
-        //     headerSpace += " ";
-        // }
 
 
 
 
 
-        // prlong it
+        // print it
         System.out.println(" " + space + "   " + first_number);
         System.out.println("x" + space + "   " + second_number);
 
 
 
         System.out.println(line);
+        
         for (int i = 0; i < length; i++) {
             String indentation = " ";
             for (int j = length - i; j+3 > 0 ; j--) {
@@ -94,16 +98,28 @@ public class Main {
             }
             
             
-            // System.out.prlongf(calculationSpace);
             System.out.printf("%-20s", partialStr);
             System.out.println("partial products for (=" + first_number + " x " + second_number_array[i] + ")");
-            // System.out.prlongf(calculationSpace);
+
+        
+            carryStr = carryStr.replaceFirst(String.valueOf(0), " "); //REPLACE FIRST 0 WITH SPACE
+
+
             System.out.printf("%-20s", carryStr);
             System.out.println("carry for (=" + first_number + " x " + second_number_array[i] + ")");
             
+            if (i == length - 1) {
+                System.out.println(line);
+                System.out.println(indentation + result);
+                System.out.println(line);
+            }
+
 
         }
-        System.out.println(line);
-        System.out.println(space +" "+ result);
+    }
+
+    private static long generateRandomNumber(int numberOfDigits, Random random) {
+        // Generate a random number between 10^(numberOfDigits - 1) and (10^numberOfDigits - 1)
+        return (long) Math.pow(10, numberOfDigits - 1) + random.nextInt((int) Math.pow(10, numberOfDigits) - (int) Math.pow(10, numberOfDigits - 1));
     }
 }
