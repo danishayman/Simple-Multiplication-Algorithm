@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Main {
+public class SimpleMultiplication {
     public static void main(String[] args) {
         int numberOfDigits = 3; // Change this to specify the number of digits for the two numbers
         Random random = new Random();
@@ -9,7 +9,7 @@ public class Main {
         // long second_number = generateRandomNumber(numberOfDigits, random);
         long first_number = 754;
         long second_number = 380;
-        long result = 0;;
+        long result = 0;
 
          
 
@@ -58,12 +58,12 @@ public class Main {
 
         String line = "-----";
         // length + 7 to account for the space and the 'x' sign
-        for (long i = 0; i < length + 7; i++) {
+        for (int i = 0; i < length + 7; i++) {
             line += "-";
         }
 
         String space = "";
-        for (long i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             space += " ";
         }
 
