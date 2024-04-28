@@ -4,29 +4,32 @@ public class SimpleMultiplication {
 
     public static void main(String[] args) {
 
-        int numberOfDigits = 2; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 4; // Change this to specify the number of digits for the two numbers
         Random random = new Random();
 
         long first_number = generateRandomNumber(numberOfDigits, random);
-        long second_number = generateRandomNumber(numberOfDigits, random);
+        long second_number =  generateRandomNumber(numberOfDigits, random);
 
-        // Call the simpleMultiplication function and store the result
+
+
         simpleMultiplication(first_number, second_number);
+        
+        
     }
+
+
 
     private static int counter = 0; // Counter variable to count the total primitive operations executed
 
     // Generate a random number with the specified number of digits
     private static long generateRandomNumber(int numberOfDigits, Random random) {
         counter += 6; // Increment counter for the Math.pow(), subtraction, and addition operations
-                      // and return statement
-
-        // Generate a random number between 10^(numberOfDigits - 1) and
-        // (10^numberOfDigits - 1)
+    
+        // Generate a random number between 10^(numberOfDigits - 1) and (10^numberOfDigits - 1)
         long randomNumber = (long) Math.pow(10, numberOfDigits - 1)
-                + random.nextInt((int) Math.pow(10, numberOfDigits) - (int) Math.pow(10, numberOfDigits - 1));
+                + random.nextInt((int) (Math.pow(10, numberOfDigits) - Math.pow(10, numberOfDigits - 1)));
         counter += 2; // Increment counter for the Math.pow() and subtraction operations
-
+    
         return randomNumber;
     }
 

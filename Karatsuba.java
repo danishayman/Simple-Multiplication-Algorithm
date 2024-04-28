@@ -1,10 +1,14 @@
+import java.util.Random;
+
 /// Java Program to Implement Karatsuba Algorithm
  
-// Importing Random class from java.util packahge
-import java.util.Random;
+// Importing Random class from java.util package
  
 // Main class 
 class Karatsuba {
+    
+    // Counter for primitive operations
+    static int counter = 0;
  
     // Main driver method 
     public static long mult(long x, long y) {
@@ -12,6 +16,9 @@ class Karatsuba {
         // Checking only if input is within range  
         if (x < 10 && y < 10) {
            
+            // Increment counter for multiplication
+            counter++;
+            
             // Multiplying the inputs entered 
             return x * y;
         }
@@ -41,21 +48,29 @@ class Karatsuba {
         long c = y / maxNumLengthTen;
         long d = y % maxNumLengthTen;
  
+        // Increment counter for divisions and modulo operations
+        counter += 4;
  
-        // Compute all mutilpying variables
+        // Compute all multiplying variables
         // needed to get the multiplication    
         long z0 = mult(a, c);
         long z1 = mult(a + b, c + d);
         long z2 = mult(b, d);
  
+        // Increment counter for recursive calls
+        counter += 3;
+ 
         long ans = (z0 * (long)Math.pow(10, halfMaxNumLength * 2) + 
                    ((z1 - z0 - z2) * (long)Math.pow(10, halfMaxNumLength) + z2));
+ 
+        // Increment counter for additions, subtractions, and multiplications
+        counter += 4;
  
         return ans;
  
     }
    
-      // Method 1
+    // Method 1
     // To calculate length of the number
     public static int numLength(long n)
     {
@@ -63,19 +78,22 @@ class Karatsuba {
         while (n > 0) {
             noLen++;
             n /= 10;
+ 
+            // Increment counter for divisions
+            counter++;
         }
  
         // Returning length of number n
         return noLen;
     }
  
-     // Method 2
+    // Method 2
     // Main driver function
     public static void main(String[] args)
     {
         // Showcasing karatsuba multiplication
          
-      // Case 1: Big integer lengths
+        // Case 1: Big integer lengths
         long expectedProduct = 1234 * 5678;
         long actualProduct = mult(1234, 5678);
  
@@ -85,14 +103,13 @@ class Karatsuba {
        
         assert(expectedProduct == actualProduct);
  
- 
         expectedProduct = 102 * 313;
         actualProduct = mult(102, 313);
  
         System.out.println("Expected 2 : " + expectedProduct);
         System.out.println("Actual 2 : " + actualProduct + "\n\n");
          
-      assert(expectedProduct == actualProduct);
+        assert(expectedProduct == actualProduct);
  
         expectedProduct = 1345 * 63456;
         actualProduct = mult(1345, 63456);
@@ -100,7 +117,7 @@ class Karatsuba {
         System.out.println("Expected 3 : " + expectedProduct);
         System.out.println("Actual 3 : " + actualProduct + "\n\n");
          
-      assert(expectedProduct == actualProduct);        
+        assert(expectedProduct == actualProduct);        
      
         Integer x = null;
         Integer y = null;
@@ -118,17 +135,20 @@ class Karatsuba {
  
             if (i == 9999) {
                
-              // Prove assertions catch the bad stuff.
+                // Prove assertions catch the bad stuff.
                 expectedProduct = 1;    
             }
             actualProduct = mult(x, y);
  
-             // Again printing the expected and 
+            // Again printing the expected and 
             // corresponding actual product 
             System.out.println("Expected: " + expectedProduct);
             System.out.println("Actual: " + actualProduct + "\n\n");
  
             assert(expectedProduct == actualProduct);        
         }
+        
+        // Print the counter value
+        System.out.println("Primitive operations executed: " + counter);
     }
 }
