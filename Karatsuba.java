@@ -3,7 +3,7 @@
 // Importing Random class from java.util packahge
 import java.util.Random;
  
-// MAin class 
+// Main class 
 class Karatsuba {
  
     // Main driver method 
