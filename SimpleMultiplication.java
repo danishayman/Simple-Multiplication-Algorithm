@@ -19,9 +19,6 @@ public class SimpleMultiplication {
     }
 
 
-
-    
-
     // Generate a random number with the specified number of digits
     private static long generateRandomNumber(int numberOfDigits, Random random) {
     
