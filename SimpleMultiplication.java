@@ -1,12 +1,13 @@
 import java.util.Random;
 
+
 public class SimpleMultiplication {
 
     private static int counter = 0; // Counter variable to count the total primitive operations executed
 
     public static void main(String[] args) {
 
-        int numberOfDigits = 11; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 10; // Change this to specify the number of digits for the two numbers
         counter++; // Increment the counter for the initialization of the numberOfDigits variable
 
         Random random = new Random();
@@ -24,6 +25,7 @@ public class SimpleMultiplication {
 
     // Generate a random number with the specified number of digits
     private static long generateRandomNumber(int numberOfDigits, Random random) {
+
         long min = (long) Math.pow(10, numberOfDigits - 1);
         counter += 3; // Increment the counter for the initialization of the min variable
 
@@ -44,9 +46,11 @@ public class SimpleMultiplication {
         long result = 0;
         counter++; // Increment the counter for the initialization of the result variable
 
+
         // get length of number assuming both number has the same length
         int length = String.valueOf(first_number).length();
         counter++; // Increment the counter for the initialization of the length variable
+
 
         // store each digit in an array
         long[] first_number_array = new long[length];
