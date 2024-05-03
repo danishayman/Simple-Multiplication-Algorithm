@@ -13,7 +13,7 @@ class Karatsuba {
     // Main driver method 
     public static long mult(long x, long y) {
  
-        // Checking only if input is within range  
+        // Checking only if input is within range
         if (x < 10 && y < 10) {
            
             // Increment counter for multiplication
@@ -66,8 +66,8 @@ class Karatsuba {
         // Increment counter for additions, subtractions, and multiplications
         counter += 4;
  
-        return ans;
- 
+        return ans; 
+
     }
    
     // Method 1

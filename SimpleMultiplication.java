@@ -6,7 +6,7 @@ public class SimpleMultiplication {
 
     public static void main(String[] args) {
 
-        int numberOfDigits = 3; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 2; // Change this to specify the number of digits for the two numbers
         counter++; // Increment the counter for the initialization of the numberOfDigits variable
 
         Random random = new Random();
