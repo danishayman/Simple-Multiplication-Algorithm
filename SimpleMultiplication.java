@@ -6,14 +6,14 @@ public class SimpleMultiplication {
 
     public static void main(String[] args) {
 
-        int numberOfDigits = 2; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 11; // Change this to specify the number of digits for the two numbers
         counter++; // Increment the counter for the initialization of the numberOfDigits variable
 
         Random random = new Random();
         counter++; // Increment the counter for the initialization of the random variable
 
-        int first_number = generateRandomNumber(numberOfDigits, random);
-        int second_number = generateRandomNumber(numberOfDigits, random);
+        long first_number = generateRandomNumber(numberOfDigits, random);
+        long second_number = generateRandomNumber(numberOfDigits, random);
         counter += 4; // Increment the counter for the initialization of the first_number and
                       // second_number variables and fucntion call
 
@@ -23,14 +23,14 @@ public class SimpleMultiplication {
     }
 
     // Generate a random number with the specified number of digits
-    private static int generateRandomNumber(int numberOfDigits, Random random) {
-        int min = (int) Math.pow(10, numberOfDigits - 1);
+    private static long generateRandomNumber(int numberOfDigits, Random random) {
+        long min = (long) Math.pow(10, numberOfDigits - 1);
         counter += 3; // Increment the counter for the initialization of the min variable
 
-        int max = (int) Math.pow(10, numberOfDigits) - 1;
+        long max = (long) Math.pow(10, numberOfDigits) - 1;
         counter += 3; // Increment the counter for the initialization of the max variable
 
-        int randomNumber = random.nextInt(max - min + 1) + min;
+        long randomNumber = random.nextLong(max - min + 1) + min;
         counter += 4; // Increment the counter for the initialization of the randomNumber variable
 
         counter++; // Increment the counter for the return statement
