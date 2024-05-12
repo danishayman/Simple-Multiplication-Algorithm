@@ -148,9 +148,11 @@ class KaratsubaReal {
         assert(expectedProduct == actualProduct);
         counter++; // Increment counter for the comparison operation
 
-        Integer x = null;
-        Integer y = null;
-        Integer MAX_VALUE = 10000;
+//        Integer x = null;
+//        Integer y = null;
+        long minDigit = 100000000;
+        long maxDigit = 999999999;
+        Integer MAX_VALUE = 100;
         counter += 3; // Increment counter for the assignment operations
 
         // Boe creating an object of random class
@@ -161,9 +163,10 @@ class KaratsubaReal {
         for (int i = 0; i < MAX_VALUE; i++) {
             counter += 3; // Increment counter for the loop initialisation, condition and increment
 
-            x = (int) r.nextInt(MAX_VALUE);
-            y = (int) r.nextInt(MAX_VALUE);
-            counter += 4; // Increment counter for assignment and method call operations
+            long x = minDigit + (long) (Math.random() * (maxDigit - minDigit + 1));
+            long y = minDigit + (long) (Math.random() * (maxDigit - minDigit + 1));
+            counter += 12; // Increment counter for assignment, arithmetic and method call operations
+            System.out.println("Value of x: " + x + "\nValue of y: " + y);
 
             expectedProduct = x * y;
             counter += 2; // Increment counter for assignment and multiplication operations
@@ -187,6 +190,7 @@ class KaratsubaReal {
             assert(expectedProduct == actualProduct);
             counter++; // Increment counter for comparison operation
         }
+        counter++;
         System.out.println("Total number of primitive operations = " + counter);
     }
 }
