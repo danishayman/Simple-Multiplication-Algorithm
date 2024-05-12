@@ -15,7 +15,7 @@ public class SimpleMultiplication {
         int MAX_VALUE = 10000; // change this to specify the number of iterations
         counter++; // Increment the counter for the initialization of the MAX_VALUE variable
 
-        int numberOfDigits = 10; // Change this to specify the number of digits for the two numbers
+        int numberOfDigits = 3; // Change this to specify the number of digits for the two numbers
         counter++; // Increment the counter for the initialization of the numberOfDigits variable
 
         Random random = new Random();

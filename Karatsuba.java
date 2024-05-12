@@ -108,7 +108,7 @@ class Karatsuba {
         // Increment counter for the initialisation of actualProduct variable
         counter++;
 
-        int numberOfDigits = 10;
+        int numberOfDigits = 3;
         // Increment counter for the initialisation of numberOfDigits variable
         counter++;
 
