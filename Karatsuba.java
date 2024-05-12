@@ -1,81 +1,78 @@
+/// Java Program to Implement Karatsuba Algorithm
+
+// Importing Random class from java.util package
 import java.util.Random;
 
-class GFG {
+// Main class
+class Karatsuba {
 
     // Counter to count the number of primitive operations
-    public static long counter = 0;
+    public static int counter = 0;
 
     // Main driver method
     public static long mult(long x, long y) {
-        // Increment counter for checking input range
-        counter++;
 
         // Checking only if input is within range
+        // Increment counter for the comparison operations
+        counter += 3;
         if (x < 10 && y < 10) {
-            // Increment counter for multiplication operation
-            counter++;
+
             // Multiplying the inputs entered
+            // Increment counter for the multiplication operation & return statement
+            counter += 2;
             return x * y;
         }
-
-        // Increment counter for variable declaration
-        counter += 2;
 
         // Declaring variables in order to
         // Find length of both integer
         // numbers x and y
         int noOneLength = numLength(x);
+        // Increment counter for the assignment and function calling operations
+        counter += 2;
         int noTwoLength = numLength(y);
-
-        // Increment counter for Math.max() operation
-        counter++;
+        // Increment counter for the assignment and function calling operations
+        counter += 2;
 
         // Finding maximum length from both numbers
         // using math library max function
         int maxNumLength = Math.max(noOneLength, noTwoLength);
-
-        // Increment counter for assignment
-        counter++;
-
-        // Rounding up the divided Max length
-        int halfMaxNumLength = (maxNumLength / 2) + (maxNumLength % 2);
-
-        // Increment counter for assignment and math.pow()
+        // Increment counter for the assignment and function call operations
         counter += 2;
 
-        // Multiplier
-        long maxNumLengthTen = (long)Math.pow(10, halfMaxNumLength);
+        // Rounding up the divided Max length
+        Integer halfMaxNumLength = (maxNumLength / 2) + (maxNumLength % 2);
+        // Increment counter for the assignment, division, addition and modulo
+        // operations
+        counter += 4;
 
-        // Increment counter for assignment
-        counter++;
+        // Multiplier
+        long maxNumLengthTen = (long) Math.pow(10, halfMaxNumLength);
+        // Increment counter for assignment and function call operations
+        counter += 2;
 
         // Compute the expressions
         long a = x / maxNumLengthTen;
         long b = x % maxNumLengthTen;
         long c = y / maxNumLengthTen;
         long d = y % maxNumLengthTen;
-
-        // Increment counter for arithmetic operations
-        counter += 4;
+        // Increment counter for assignment, division and modulo operations
+        counter += 8;
 
         // Compute all multiplying variables
         // needed to get the multiplication
         long z0 = mult(a, c);
         long z1 = mult(a + b, c + d);
         long z2 = mult(b, d);
+        // Increment counter for assignment and function call operations
+        counter += 8;
 
-        // Increment counter for assignment and arithmetic operations
-        counter += 7;
+        long ans = (z0 * (long) Math.pow(10, halfMaxNumLength * 2) +
+                ((z1 - z0 - z2) * (long) Math.pow(10, halfMaxNumLength) + z2));
+        // Increment counter for the assignment, addition, subtraction and
+        // multiplication operations
+        counter += 10;
 
-        long ans = (z0 * (long)Math.pow(10, halfMaxNumLength * 2) +
-                ((z1 - z0 - z2) * (long)Math.pow(10, halfMaxNumLength) + z2));
-
-        // Increment counter for arithmetic operations
-        counter += 6;
-
-        // Increment counter for return statement
-        counter++;
-
+        counter++; // Increment counter for the return statement
         return ans;
 
     }
@@ -83,96 +80,99 @@ class GFG {
     // Method 1
     // To calculate length of the number
     public static int numLength(long n) {
-        // Increment counter for variable initialization
-        counter++;
         int noLen = 0;
         while (n > 0) {
             noLen++;
             n /= 10;
-            // Increment counter for arithmetic operations and loop iteration
-            counter += 2;
         }
-        // Increment counter for return statement
-        counter++;
+
+        // Increment counter for the assignment, comparison, increment and division
+        // operations
+        counter += 5;
+
+        counter++; // Increment counter for the return statement
         // Returning length of number n
         return noLen;
     }
 
+    // Method 2
     // Main driver function
     public static void main(String[] args) {
-        // Showcasing karatsuba multiplication
 
-        // Change the number of digits here
-        int n = 1;
+        // Initialisation of variables
+        long expectedProduct;
+        // Increment counter for the initialisation of expectedProduct variable
+        counter++;
 
-        // Case 1: Big integer lengths
-        long expectedProduct = 1234 * 5678;
-        long actualProduct = mult(1234, 5678);
+        long actualProduct;
+        // Increment counter for the initialisation of actualProduct variable
+        counter++;
 
-        // Printing the expected and corresponding actual product
-        System.out.println("Expected 1 : " + expectedProduct);
-        System.out.println("Actual 1 : " + actualProduct + "\n\n");
+        int numberOfDigits = 10;
+        // Increment counter for the initialisation of numberOfDigits variable
+        counter++;
 
-        // Increment counter for print statements
-        counter += 4;
-
-        assert(expectedProduct == actualProduct);
-
-        expectedProduct = 102 * 313;
-        actualProduct = mult(102, 313);
-
-        System.out.println("Expected 2 : " + expectedProduct);
-        System.out.println("Actual 2 : " + actualProduct + "\n\n");
-
-        // Increment counter for print statements
-        counter += 4;
-
-        assert(expectedProduct == actualProduct);
-
-        expectedProduct = 1345 * 63456;
-        actualProduct = mult(1345, 63456);
-
-        System.out.println("Expected 3 : " + expectedProduct);
-        System.out.println("Actual 3 : " + actualProduct + "\n\n");
-
-        // Increment counter for print statements
-        counter += 4;
-
-        assert(expectedProduct == actualProduct);
-
-        Integer x = null;
-        Integer y = null;
-        Integer MAX_VALUE = 1;
+        Integer MAX_VALUE = 10000;
+        // Increment counter for the initialisation of MAX_VALUE variable
+        counter++;
 
         // Boe creating an object of random class
         // inside main() method
         Random r = new Random();
+        counter++; // Increment counter for the initialisation of random variable
 
         for (int i = 0; i < MAX_VALUE; i++) {
-            x = r.nextInt((int)Math.pow(10, n));
-            y = r.nextInt((int)Math.pow(10, n));
+            counter += 3; // Increment counter for the loop initialisation, condition and increment
+
+            long x = generateRandomNumber(numberOfDigits, r);
+            long y = generateRandomNumber(numberOfDigits, r);
+            counter += 4; // Increment counter for the assignment and function call operations
+
+            System.out.println("First Number: " + x + "\nSecond Number: " + y);
+            counter += 4; // Increment counter for the print statements
 
             expectedProduct = x * y;
+            counter += 2; // Increment counter for assignment and multiplication operations
 
+            counter++; // Increment counter for the comparison operation
             if (i == 9999) {
+
                 // Prove assertions catch the bad stuff.
                 expectedProduct = 1;
+                counter++; // Increment counter for assignment operation
             }
             actualProduct = mult(x, y);
+            counter += 2; // Increment counter for assignment and function call
 
             // Again printing the expected and
             // corresponding actual product
-            System.out.println("Value 1: " + x + "\nValue 2: " + y);
             System.out.println("Expected: " + expectedProduct);
-            System.out.println("Actual: " + actualProduct + "\n\n");
+            System.out.println("Actual: " + actualProduct);
+            counter += 4; // Increment counter for print statements
 
-            // Increment counter for print statements
-            counter += 4;
+            System.out.println("Total number of primitive operations = " + counter + "\n");
+            counter += 3; // Increment counter for the print statement
 
-            assert(expectedProduct == actualProduct);
+            assert expectedProduct == actualProduct : "The expected result is not equal to the actual result";
+            counter++; // Increment counter for the assert statement
         }
 
-        // Print total number of primitive operations
-        System.out.println("Total number of primitive operations: " + counter);
+    }
+
+    // Generate a random number with the specified number of digits
+    private static long generateRandomNumber(int numberOfDigits, Random random) {
+
+        long min = (long) Math.pow(10, numberOfDigits - 1);
+        counter += 3; // Increment the counter for the initialization of the min variable
+
+        long max = (long) Math.pow(10, numberOfDigits) - 1;
+        counter += 3; // Increment the counter for the initialization of the max variable
+
+        long randomNumber = random.nextLong(max - min + 1) + min;
+        counter += 4; // Increment the counter for the initialization of the randomNumber variable
+
+        counter++; // Increment the counter for the return statement
+        return randomNumber;
+
     }
 }

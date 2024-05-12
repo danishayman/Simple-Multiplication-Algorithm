@@ -1,11 +1,19 @@
 import java.util.Random;
 
-
 public class SimpleMultiplication {
 
     private static int counter = 0; // Counter variable to count the total primitive operations executed
 
     public static void main(String[] args) {
+
+        long expected_result; // Variable to store the expected result
+        counter++; // Increment the counter for the initialization of the expected_result variable
+
+        long actual_result; // Variable to store the actual result
+        counter++; // Increment the counter for the initialization of the result variable
+
+        int MAX_VALUE = 10000; // change this to specify the number of iterations
+        counter++; // Increment the counter for the initialization of the MAX_VALUE variable
 
         int numberOfDigits = 10; // Change this to specify the number of digits for the two numbers
         counter++; // Increment the counter for the initialization of the numberOfDigits variable
@@ -13,13 +21,41 @@ public class SimpleMultiplication {
         Random random = new Random();
         counter++; // Increment the counter for the initialization of the random variable
 
-        long first_number = generateRandomNumber(numberOfDigits, random);
-        long second_number = generateRandomNumber(numberOfDigits, random);
-        counter += 4; // Increment the counter for the initialization of the first_number and
-                      // second_number variables and fucntion call
+        for (int i = 0; i < MAX_VALUE; i++) {
+            counter += 3; // Increment the counter for the loop initialization, the loop condition & the
+                          // loop increment
+            long first_number = generateRandomNumber(numberOfDigits, random);
+            long second_number = generateRandomNumber(numberOfDigits, random);
+            counter += 4; // Increment the counter for the initialization of the first_number and
+                          // second_number variables and fucntion call
 
-        simpleMultiplication(first_number, second_number);
-        counter++; // Increment the counter for the function call
+            // Call the simpleMultiplication function to calculate the product of the two
+            // numbers
+            actual_result = simpleMultiplication(first_number, second_number);
+            counter += 2; // Increment the counter for the assignment operation and the function call
+
+            // Calculate expected result
+            expected_result = first_number * second_number;
+            counter += 2; // Increment the counter for the assignment operation and the multiplication
+                          // operation
+
+            counter++; // Increment the counter for the comparison operation
+            if (i == 9999) {
+                // Prove assertions catch the bad stuff.
+                expected_result = 1;
+                counter++; // Increment counter for assignment operation
+            }
+
+            System.out.println("Expected: " + expected_result);
+            counter += 2; // Increment the counter for the print statement
+
+            System.out.println("Actual: " + actual_result + "\n\n");
+            counter += 2; // Increment the counter for the print statement
+
+            // Add assertion to compare actual result with expected result
+            assert expected_result == actual_result : "The expected result is not equal to the actual result";
+            counter++; // Increment the counter for the assert statement
+        }
 
     }
 
@@ -40,17 +76,15 @@ public class SimpleMultiplication {
 
     }
 
-    private static void simpleMultiplication(long first_number, long second_number) {
+    private static long simpleMultiplication(long first_number, long second_number) {
 
         // Initialize the result to 0
         long result = 0;
         counter++; // Increment the counter for the initialization of the result variable
 
-
         // get length of number assuming both number has the same length
         int length = String.valueOf(first_number).length();
         counter++; // Increment the counter for the initialization of the length variable
-
 
         // store each digit in an array
         long[] first_number_array = new long[length];
@@ -235,6 +269,9 @@ public class SimpleMultiplication {
 
         System.out.println("Total primitive operations executed: " + counter);
         counter++; // Increment the counter for the print statement
+
+        counter++; // Increment the counter for the return statement
+        return result;
 
     }
 }
