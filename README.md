@@ -13,3 +13,17 @@
 Overall, the most significant factor affecting the time complexity is the multiplication step, which is O(n^2) due to the nested loops iterating over the digits of both numbers. Therefore, the overall time complexity of the algorithm is O(n^2), where n is the number of digits in the larger of the two input numbers.
 
 ## Karatsuba Algorithm
+The Karatsuba algorithm is a fast multiplication algorithm that reduces the number of multiplication operations required to multiply two numbers by recursively breaking down the multiplication into smaller multiplications. The number of subproblems is reduced to three. In this analysis, The multiplications are performed using two values of n-digit integers.
+
+The working of Karatsuba algorithm is as follow:
+
+Let x and y be the n-digit integers multiplicand and multiplier respectively.
+
+If n = 1, perform a simple multiplication algorithm.
+Else, split both x and y into two halves namely a and b for x as well as c and d for y. With this, x = 10n/2 * a + b and y = 10n/2 * c + d
+Carry out three recursive multiplications which are:
+ac
+bd
+(a+b)(c+d)
+Lastly, the product is computed using the formula:
+ac * 10n/2 + ((a+b)(c+d) - ac - bd) * 10n/2 + bd
